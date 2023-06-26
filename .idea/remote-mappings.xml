@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="python@19c6e840-3bca-43cf-b621-e5bbdf0a095d" />
+        <remote-mappings server-id="python@sftp://root@192.168.10.100:22/home/hadoop/anaconda3/envs/pyspark/bin/python3.8" />
+      </list>
+    </list>
+  </component>
+</project>

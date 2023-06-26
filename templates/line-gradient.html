@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+    <title>line-gardient</title>
+    <script type="text/javascript">
+        var x_ios = JSON.parse('{{ x_ios|tojson|safe }}');
+        var y_ios = JSON.parse('{{ y_ios|tojson|safe }}');
+        var x_android = JSON.parse('{{ x_android|tojson|safe }}');
+        var y_android = JSON.parse('{{ y_android|tojson|safe }}');
+    </script>
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%">
+      <script>
+    // 等页面加载完成后执行
+    window.addEventListener('load', function() {
+      initChart('container');
+    });
+    </script>
+  </div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/line-gardient.js') }}"></script>
+</body>
+</html>

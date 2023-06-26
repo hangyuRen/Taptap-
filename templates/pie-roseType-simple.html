@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+    <title>rose</title>
+    <script type="text/javascript">
+    // 将 Flask 传递的数据转化为 JavaScript 变量
+    var dataList = JSON.parse('{{ data|tojson|safe }}');
+  </script>
+</head>
+<body style="height: 100%; margin: 0">
+<div style="height: 100px;width: 100px">
+  <div id="container" style="height: 100%">
+      <script>
+    // 等页面加载完成后执行
+    window.addEventListener('load', function() {
+      initChart('container');
+    });
+    </script>
+  </div>
+</div>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/pie-roseType-simple.js') }}"></script>
+</body>
+</html>

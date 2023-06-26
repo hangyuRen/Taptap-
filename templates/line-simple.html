@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+    <title>line-simple</title>
+    <script type="text/javascript">
+    // 将 Flask 传递的数据转化为 JavaScript 变量
+    var x_data = JSON.parse('{{ x_data|tojson|safe }}');
+    var y_data = JSON.parse('{{ y_data|tojson|safe }}');
+  </script>
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%">
+      <script>
+    // 等页面加载完成后执行
+    window.addEventListener('load', function() {
+      initChart('container');
+    });
+    </script>
+  </div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/line-simple.js') }}"></script>
+</body>
+</html>
