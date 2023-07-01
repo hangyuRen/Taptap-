@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <title>SWU.NO.5</title>
+     <script type="text/javascript" src="{{ url_for('static', filename='plugins/echarts.min.js') }}"></script>
+</head>
+<body>
+
+  <div id="chart" style="width: 600px; height: 400px;"></div>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('chart'));
+    var data1 = JSON.parse('{{ data1|tojson|safe }}');
+    var data2 = JSON.parse('{{ data2|tojson|safe }}');
+    var option = {
+        tooltip: {
+    show: true  // 显示 tooltip
+  },
+      xAxis: {
+        type: 'category',
+        data: data1
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: data2,
+          type: 'line'
+        }
+      ]
+    };
+    myChart.setOption(option);
+  </script>
+</body>
+</html>

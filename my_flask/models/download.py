@@ -12,16 +12,8 @@ class Download(MySparkSession):
 
     def ios_download_list(self):
         ios_download = self.spark.sql("select name, downloadnum from tap.ios_by_downLoad limit 10")
-
-        x_ios = ios_download.rdd.map(lambda x: x[0]).collect()
-        y_ios = ios_download.rdd.map(lambda x: int(x[1])).collect()
-
-        return x_ios, y_ios
+        return ios_download
 
     def android_download_list(self):
         android_download = self.spark.sql("select name, downloadnum from tap.android_by_downLoad limit 10")
-
-        x_android = android_download.rdd.map(lambda x: x[0]).collect()
-        y_android = android_download.rdd.map(lambda x: int(x[1])).collect()
-
-        return x_android, y_android
+        return android_download

@@ -1,0 +1,75 @@
+
+    <!-- Data Table JS
+		============================================ -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.dataTables.min.css')}}">
+
+    <!-- Data Table JS
+		============================================ -->
+    <script src="{{ url_for('static', filename='js/data-table/jquery.dataTables.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<table id ="table-developer" class="table table-inner table-vmiddle">
+                                    <thead>
+                                        <tr>
+                                            <th>头像</th>
+                                            <th>厂商</th>
+                                            <th  class="sortable">游戏数</th>
+                                            <th  class="sortable">粉丝</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                 {% for company in data_developer[:20]%}
+                                <tr>
+                                    <td><a href="{{ company[1] }}"><img  src="/proxy_image?url={{ company[4] }}" style=" width: 63px; height: 63px;"  alt="头像"></a></td>
+                                    <td><a href="{{ company[1] }}">{{ company[0] }}</a></td>
+                                    <td>{{ company[2] }}</td>
+                                    <td>{{ company[3] }}</td>
+                                </tr>
+                                {% endfor %}
+                                    </tbody>
+                                </table>
+                                    <style>
+                                        /* 默认按钮样式 */
+                                        .dataTables_wrapper .dataTables_paginate .paginate_button {
+                                            background-color: #fff;
+                                            border: 1px solid #ddd;
+                                            border-radius: 50%;
+                                            transition: background-color 0.3s ease;
+                                        }
+
+                                        /* 按钮按下时的样式 */
+                                        .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+                                            background-color: #c8e6c9;
+                                        }
+                                    </style>
+                                    <script>
+                                    $(document).ready(function() {
+                                        $('#table-developer').DataTable({
+                                            // 默认排序
+                                            order: [],
+
+                                            // 允许排序
+                                            ordering: true,
+
+                                            // 配置排序图标
+                                            columnDefs: [
+                                                {
+                                                    targets: [0, 1], // 头像和厂商列的索引位置
+                                                    orderable: false // 禁用排序
+                                                }
+                                            ],
+
+                                            // 每页显示的行数
+                                            pageLength: 5,
+
+                                            // 隐藏搜索框
+                                            searching: false,
+
+                                            // 隐藏显示行数选择框
+                                            lengthChange: false
+                                        });
+                                    });
+
+                                    </script>

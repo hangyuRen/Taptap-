@@ -1,0 +1,230 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+
+    <script type="text/javascript">
+        // 将 Flask 传递的数据转化为 JavaScript 变量
+
+
+        //游戏关注度排行数据
+        var iosGameNameByFans = JSON.parse('{{ ios_game_fans|tojson|safe }}');
+        var iosFansCount = JSON.parse('{{ ios_fans|tojson|safe }}');
+        var androidGameNameByFans = JSON.parse('{{ android_game_fans|tojson|safe }}');
+        var androidFansCount = JSON.parse('{{ android_fans|tojson|safe }}');
+
+        //下载量排行数据
+        var iosGameNameByDownload = JSON.parse('{{ ios_game_down|tojson|safe }}');
+        var iosDownloadCount = JSON.parse('{{ ios_down|tojson|safe }}');
+        var androidGameNameByDownload = JSON.parse('{{ android_game_down|tojson|safe }}');
+        var androidDownloadCount = JSON.parse('{{ android_down|tojson|safe }}');
+
+        //评分
+        var xLabel = JSON.parse('{{ x_label|tojson|safe }}');
+        var iosRate = JSON.parse('{{ ios_rate|tojson|safe }}');
+        var androidRate = JSON.parse('{{ android_rate|tojson|safe }}');
+
+  </script>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SWU.NO.5</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts
+		============================================ -->
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+<!--    <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/meanmenu/meanmenu.m')}}">-->
+    <!-- Notika icon CSS 导航栏图标
+		============================================ -->
+    <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/notika-custom-icon.css')}}">
+
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/style.css')}}">
+
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Start Header Top Area -->
+    <div class="header-top-area">
+        <div class="container" style="width:100%; height:auto; margin-left: 10px;margin-right: 10px">
+            <div class="row">
+                <div class="type">
+                    <div class="logo-area" style="display: flex">
+                        <a href="#"><img src="{{ url_for('static', filename='img/anadata-logo.png')}}" style="width: 50px; height: 45px;" alt="" /></a>
+                        <p style="font-size: x-large;color: white;margin-left: 10px;margin-top: 5px">TapTap游戏平台大数据分析</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Header Top Area -->
+    <!-- Main Menu area start-->
+    <div class="main-menu-area mg-tb-40" style="margin-top: 20px;margin-bottom: 20px;">
+        <div class="container" style="width:100%; height:auto; margin-left: 10px;margin-right: 10px">
+            <div class="row">
+                <div class="type2 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
+                        <li><a data-toggle="tab" href="index">主页面</a>
+                        </li>
+                        <li><a data-toggle="tab" href="analytics">数据分析</a>
+                        </li>
+                        <li><a data-toggle="tab" href="data-table">下载指导</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Menu area End-->
+	<!-- Main nav Start-->
+	<div class="part-4">
+                <div class="container" style="width:100%; height:auto; margin-left: 10px;margin-right: 10px">
+            <div class="row">
+                <div class="type">
+                    <div class="nav-model   sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="nav-title1">
+                            <h2><span class="counter">50,000款</span></h2>
+                            <p>近期发布的游戏</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="type">
+                    <div class="nav-model   sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="nav-title1">
+                            <h2><span class="counter">90,000款</span></h2>
+                            <p>即将发布的游戏</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="type">
+                    <div class="nav-model   sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
+                        <div class="nav-title1">
+                            <h2><span class="counter">40,000款</span></h2>
+                            <p>可预约的游戏</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="type">
+                    <div class="nav-model   sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
+                        <div class="nav-title1">
+                            <h2><span class="counter">1,000家</span></h2>
+                            <p>入驻平台的主要游戏厂商</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+	<!-- nav area End-->
+    <!-- Part-5 start-->
+    <div class="part-5">
+        <div class="container" style="width:100%; height:auto; margin-left: 10px;margin-right: 10px">
+                <div class="type" style="width: 50%">
+                    <div class="part-5-model" style="height: 400px">
+                        <div class="part-5-chart-title">
+                            <h2>游戏关注度排行</h2>
+                        </div>
+                            <div id="dynamic-chart" style="height: auto">
+                                <canvas id="myChart1" width=900 height=450 style="direction: ltr;width: 100%; height:100%;"></canvas>
+                                <script type="text/javascript">
+                                    window.addEventListener('load', function() {
+                                        initChartFans('myChart1');
+                                    });
+                                </script>
+                            </div>
+                    </div>
+                </div>
+                <div class="type" style="width: 50%">
+                    <div class="part-5-model" style="height: 400px">
+                        <div class="part-5-chart-title">
+                            <h2>游戏下载量排行</h2>
+                        </div>
+                        <div class="dynamic-chart2" style="height: auto">
+                                <canvas id="myChart2" width=900 height=450 style="direction: ltr;width: 100%; height:100%;"></canvas>
+                                <script type="text/javascript">
+                                    window.addEventListener('load', function() {
+                                        initChartDownload('myChart2');
+                                    });
+                                </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Part-5 End-->
+    <!-- Part-6 Start-->
+    <div class="part-6 mg-t-30">
+        <div class="container" style="width:100%; height:auto; margin-left: 10px;margin-right: 10px">
+            <div class="row">
+                <div class="type" style="width: 50%">
+                    <div class="part-6-model2" style="height: 400px">
+                        <div class="part-5-chart-title">
+                            <h2>各评分区间游戏数</h2>
+                        </div>
+                        <div class="dynamic-chart3">
+                            <canvas id="myChart3" width=900 height=450 style="direction: ltr;width: 100%; height:100%;"></canvas>
+                                <script type="text/javascript">
+                                    window.addEventListener('load', function() {
+                                        initChartRate('myChart3');
+                                    });
+                                </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="type" style="width: 50%">
+                    <div class="part-6-model2" style="height: 400px">
+                        <div class="part-5-chart-title">
+                        </div>
+                        <div class="dynamic-chart3">
+                            <canvas id="myChart4" width=900 height=450 style="direction: ltr;width: 100%; height:100%;"></canvas>
+{#                                <script type="text/javascript">#}
+{#                                    window.addEventListener('load', function() {#}
+{#                                        initChartAndroid('myChart4');#}
+{#                                    });#}
+{#                                </script>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Part-6 End-->
+    <!-- Start Footer area-->
+    <div class="footer-copyright-area">
+        <div class="container" style="width:100%; height:auto; margin-left: 10px;margin-right: 10px">
+            <div class="row">
+                <div class="type2">
+                    <div class="footer-copy-right">
+                        <p>Copyright &copy; 2023.HDCompany—SWUSchool Fifth Group.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--加载图表数据
+    ==================================-->
+{#    <script type="text/javascript" src="{{ url_for('static', filename='js/pie-roseType-ios.js') }}"></script>#}
+{#    <script type="text/javascript" src="{{ url_for('static', filename='js/pie-roseType-android.js') }}"></script>#}
+     <script type="text/javascript" src="{{ url_for('static', filename='plugins/echarts.min.js') }}"></script>
+
+    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/fans-list.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/download-list.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/rate-list.js') }}"></script>
+</body>
+
+</html>
